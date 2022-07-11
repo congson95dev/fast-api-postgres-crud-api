@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from .models import Book
-from .schemas import BookBase, BookResponse
+from .schemas import BookBase
 from fastapi import HTTPException
 
 
