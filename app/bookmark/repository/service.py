@@ -17,7 +17,7 @@ def create_bookmark(db: Session, bookmark: BookMarkBase):
     if not _book:
         raise HTTPException(status_code=404, detail="Book not found")
 
-    _bookmark = BookMark(title=bookmark.title, description=bookmark.description, book_id=bookmark.book_id)
+    _bookmark = BookMark(page=bookmark.page, book_id=bookmark.book_id)
     db.add(_bookmark)
     db.commit()
     db.refresh(_bookmark)
@@ -29,8 +29,8 @@ def update_bookmark(db: Session, bookmark_id: int, bookmark):
     if not _bookmark:
         raise HTTPException(status_code=404, detail="Bookmark not found")
 
-    _bookmark.title = bookmark.title or _bookmark.title
-    _bookmark.description = bookmark.description or _bookmark.description
+    _bookmark.page = bookmark.page or _bookmark.page
+    _bookmark.book_id = bookmark.book_id or _bookmark.book_id
 
     db.commit()
     db.refresh(_bookmark)

@@ -13,6 +13,7 @@ def get_db():
 
 from .book.endpoints.routes import book_router
 from .bookmark.endpoints.routes import bookmark_router
+from .booknote.endpoints.routes import booknote_router
 from .config import engine
 
 models.Base.metadata.create_all(bind=engine)
@@ -21,5 +22,6 @@ app = FastAPI()
 
 app.include_router(book_router, prefix="/book", tags=["book"])
 app.include_router(bookmark_router, prefix="/bookmark", tags=["bookmark"])
+app.include_router(booknote_router, prefix="/booknote", tags=["booknote"])
 
 

@@ -4,8 +4,7 @@ from ...book.schemas.book import BookResponse
 
 
 class BookMarkBase(BaseModel):
-    title: str
-    description: Union[str, None] = None
+    page: int
     book_id: int
 
 
@@ -24,6 +23,5 @@ class BookMarkResponse(BookMarkBase):
 
 
 class BookMarkUpdate(BaseModel):
-    title: Union[str, None] = None
-    description: Union[str, None] = None
+    page: Union[int, None] = None
     book_id: Union[int, None] = None
