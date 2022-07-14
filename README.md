@@ -16,6 +16,16 @@ To install, use: <br>
 `source venv/bin/activate` <br>
 `pip install "fastapi[all]"`
 
+To migrate db, use: <br>
+`pip install alembic` <br>
+`pip install python-dotenv`
+
+Then, change the db connection config inside `.env` file.<br>
+
+After that, run: <br>
+`alembic revision --autogenerate -m "First migration"` <br>
+`alembic upgrade head`
+
 To run the app: <br>
 `uvicorn app.main:app --reload`
 
