@@ -17,7 +17,16 @@ def get_booknotes_join_data(db: Session, skip: int = 0, limit: int = 100):
         Book.id == BookNote.book_id,
     ).offset(skip).limit(limit).all()
 
-    return result
+    response_data = []
+
+    for objects in result:
+        response_data.append({
+            "book": objects[0],
+            "bookmark": objects[1] or None,
+            "booknote": objects[2] or None
+        })
+
+    return response_data
 
 
 def create_booknote(db: Session, book: BookNoteBase):

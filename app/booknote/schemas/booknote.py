@@ -20,9 +20,9 @@ class BookNoteResponse(BookNoteBase):
 
 
 class BookNoteJoinDataResponse(BaseModel):
-    booknote: BookNoteResponse
-    r_book: BookResponse
-    r_bookmark: BookMarkResponse
+    booknote: Union[BookNoteResponse, None]
+    book: BookResponse
+    bookmark: Union[BookMarkResponse, None]
 
     # use this orm_mode = True so it can return the data even if it is not a dict, but an ORM model
     class Config:

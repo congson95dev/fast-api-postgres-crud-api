@@ -1,6 +1,9 @@
 from fastapi import FastAPI
 from . import models
 from .config import SessionLocal
+from .config import engine
+
+# models.Base.metadata.create_all(bind=engine)
 
 
 def get_db():
@@ -14,9 +17,7 @@ def get_db():
 from .book.endpoints.routes import book_router
 from .bookmark.endpoints.routes import bookmark_router
 from .booknote.endpoints.routes import booknote_router
-from .config import engine
 
-models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
